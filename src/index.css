@@ -139,22 +139,55 @@ img {
   padding-top: 80px;
 }
 
-.hero-bg-glow {
+/* ========== HERO PREMIUM BACKGROUND ========== */
+.hero-bg-premium {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 900px;
-  height: 900px;
-  background: radial-gradient(circle, var(--red-glow) 0%, transparent 60%);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 40%, rgba(20, 2, 4, 1) 0%, #030305 70%);
   z-index: 0;
-  animation: pulse-glow 4s ease-in-out infinite;
+  overflow: hidden;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.15); }
+.hero-glow-accent-1 {
+  position: absolute;
+  top: -10%;
+  left: 20%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(230, 25, 42, 0.12) 0%, transparent 65%);
+  filter: blur(80px);
+  animation: floatSleek 14s ease-in-out infinite alternate;
+}
+
+.hero-glow-accent-2 {
+  position: absolute;
+  bottom: -20%;
+  right: 15%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(138, 5, 23, 0.15) 0%, transparent 65%);
+  filter: blur(90px);
+  animation: floatSleek 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatSleek {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-40px) scale(1.05); }
+}
+
+.hero-noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.04;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .hero-smoke {
@@ -162,8 +195,8 @@ img {
   bottom: -40px;
   left: 0;
   width: 100%;
-  height: 300px;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
+  height: 350px;
+  background: linear-gradient(to top, #030305 0%, transparent 100%);
   z-index: 2;
   pointer-events: none;
 }

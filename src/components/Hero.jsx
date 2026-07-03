@@ -29,8 +29,14 @@ export default function Hero() {
 
   return (
     <section className="hero" id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-      {/* Dark clean background with subtle red/black glow */}
-      <div className="hero-bg-glow" style={{ opacity: 0.5, animationDuration: '8s' }} />
+      {/* Premium Luxury Background System */}
+      <div className="hero-bg-premium">
+        <div className="hero-glow-accent-1" />
+        <div className="hero-glow-accent-2" />
+      </div>
+      
+      {/* Film Grain/Noise Texture for expensive cinematic feel */}
+      <div className="hero-noise" />
 
       {/* Massive typography behind the can for that premium advertisement feel */}
       <div 
