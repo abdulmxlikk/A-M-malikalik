@@ -4,63 +4,63 @@ import gsap from "gsap";
 const flavors = [
   {
     id: 1,
+    name: "Classic Original",
+    tag: "Boost Your Energy",
+    image: "/images/am-berry-blast.png", // Reusing the black/red can
+    colors: ["#1a1a1a", "#e6192a"],
+    accent: "rgba(230, 25, 42, 0.3)",
+    glow: "rgba(230, 25, 42, 0.15)",
+    description:
+      "The legendary A M original. A powerful blend built to wake up your senses instantly. Perfect for intense workouts where focus is everything. Clean finish, zero aftertaste.",
+    profile: "Classic / Smooth / Intense"
+  },
+  {
+    id: 2,
     name: "Lemon Lime",
-    tag: "Citrus Burst",
+    tag: "For Active People",
     image: "/images/am-lemon-lime.png",
     colors: ["#e8e24e", "#7ecb3c"],
     accent: "rgba(200, 210, 50, 0.3)",
     glow: "rgba(200, 210, 50, 0.15)",
     description:
-      "A sharp, electric fusion of zesty lemon and sweet lime. Built to wake up your senses instantly. Perfect for early mornings and intense workouts where focus is everything. Clean finish, zero aftertaste.",
+      "A sharp, electric fusion of zesty lemon and sweet lime. All natural ingredients that keep you energized, focused and ready to take on any challenge.",
     profile: "Citrus / Sharp / Refreshing"
   },
   {
-    id: 2,
-    name: "Berry Blast",
-    tag: "Classic Original",
-    image: "/images/am-berry-blast.png",
-    colors: ["#1a1a1a", "#e6192a"],
-    accent: "rgba(230, 25, 42, 0.3)",
-    glow: "rgba(230, 25, 42, 0.15)",
-    description:
-      "The legendary A M original. A powerful blend of dark mixed berries with an explosive edge. Smooth yet intense, this is the flagship flavor that started it all. Maximum impact.",
-    profile: "Dark Berry / Smooth / Intense"
-  },
-  {
     id: 3,
-    name: "Blue Ice",
-    tag: "Arctic Chill",
+    name: "Blue Rush",
+    tag: "Electric Cool",
     image: "/images/am-blue-ice.png",
-    colors: ["#ffffff", "#00d4ff"],
+    colors: ["#0044ff", "#00d4ff"],
     accent: "rgba(0, 212, 255, 0.3)",
     glow: "rgba(0, 212, 255, 0.15)",
     description:
-      "Sub-zero refreshment. A frosty, sweet rush of blue raspberry that cools you down while hyping you up. The ultimate heat-beater for long nights and extreme pressure.",
+      "Pure deep berry refreshment. A frosty, sweet rush of blue raspberry that cools you down while hyping you up. The ultimate heat-beater for extreme pressure.",
     profile: "Blue Raspberry / Frosty / Sweet"
   },
   {
     id: 4,
-    name: "Mango Rush",
-    tag: "Tropical Fire",
-    image: "/images/am-mango-rush.png",
-    colors: ["#ff8c00", "#f3d28b"],
-    accent: "rgba(255, 140, 0, 0.3)",
-    glow: "rgba(255, 140, 0, 0.15)",
+    name: "Grape Blast",
+    tag: "Bold Flavor",
+    image: "/images/am-mango-rush.png", // Placeholder until they upload the purple can to Vercel
+    colors: ["#6600cc", "#9933ff"],
+    accent: "rgba(102, 0, 204, 0.3)",
+    glow: "rgba(102, 0, 204, 0.15)",
     description:
-      "Pure liquid gold. The exotic, juicy taste of ripe mangoes hit with a sudden rush of pure energy. Sweet, tropical, and aggressively refreshing.",
-    profile: "Tropical Mango / Sweet / Bold"
+      "A sudden blast of deep, rich grape flavor combined with the unmistakable A M energy rush. Sweet, powerful, and aggressively refreshing.",
+    profile: "Dark Grape / Sweet / Bold"
   },
   {
     id: 5,
-    name: "Green Apple",
-    tag: "Fresh Energy",
-    image: "/images/am-green-apple.png",
-    colors: ["#3cb371", "#c0c0c0"],
-    accent: "rgba(60, 179, 113, 0.3)",
-    glow: "rgba(60, 179, 113, 0.15)",
+    name: "Strawberry",
+    tag: "Sweet Raspberry / Strawberry",
+    image: "/images/am-green-apple.png", // Placeholder until red can is uploaded
+    colors: ["#ff0033", "#ff6666"],
+    accent: "rgba(255, 0, 51, 0.3)",
+    glow: "rgba(255, 0, 51, 0.15)",
     description:
-      "Crisp, tart, and undeniably electric. The unmistakable bite of sour green apple balanced with a smooth energy rush. Highly addictive and built for pure focus.",
-    profile: "Sour Apple / Crisp / Tart"
+      "Fresh, juicy, and undeniable. The bright bite of fresh strawberries balancing out a smooth energy boost. Highly addictive and built for pure focus.",
+    profile: "Wild Berry / Juicy / Ripe"
   }
 ];
 
