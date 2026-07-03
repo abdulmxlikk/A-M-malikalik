@@ -6,25 +6,10 @@ import Can3D from "./Can3D";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const wrapperRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // Scroll-triggered zoom + rotation
-    gsap.fromTo(
-      containerRef.current,
-      { scale: 0.85, rotateZ: -5, opacity: 0 },
-      {
-        scale: 1,
-        rotateZ: 0,
-        opacity: 1,
-        duration: 1.4,
-        ease: "power3.out",
-        delay: 0.3
-      }
-    );
-
-    // On scroll: subtle zoom out and upward float
+    // Scroll-triggered subtle zoom out of the entire can container for parallax depth
     ScrollTrigger.create({
       trigger: ".hero",
       start: "top top",
@@ -33,8 +18,8 @@ export default function Hero() {
       onUpdate: (self) => {
         const progress = self.progress;
         gsap.set(containerRef.current, {
-          scale: 1 - progress * 0.25,
-          y: progress * -80
+          scale: 1 - progress * 0.15,
+          y: progress * 50
         });
       }
     });
@@ -43,70 +28,82 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="hero" id="hero">
-      <div className="hero-bg-glow" />
+    <section className="hero" id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+      {/* Dark clean background with subtle red/black glow */}
+      <div className="hero-bg-glow" style={{ opacity: 0.5, animationDuration: '8s' }} />
 
-      <div className="container hero-grid">
-        <div className="hero-text fade-up">
-          <div className="hero-eyebrow">
-            <span className="dot" />
-            Premium Energy by Malik
-          </div>
+      {/* Massive typography behind the can for that premium advertisement feel */}
+      <div 
+        className="hero-text-centered fade-up" 
+        style={{ 
+          position: "absolute", 
+          zIndex: 1, 
+          textAlign: "center", 
+          width: "100%", 
+          pointerEvents: "none", 
+          top: "45%", 
+          transform: "translateY(-50%)" 
+        }}
+      >
+        <h1 style={{ 
+          fontSize: "clamp(4rem, 15vw, 15rem)", 
+          fontWeight: 900, 
+          lineHeight: 0.8, 
+          color: "rgba(255,255,255,0.03)", 
+          textTransform: "uppercase",
+          letterSpacing: "-0.05em",
+          margin: 0
+        }}>
+          MALIK
+        </h1>
+      </div>
 
-          <h1>
-            <span className="highlight">A M</span> Energy
-            <br />
-            Drink
-            <span className="malik">By Abdul Malik</span>
-          </h1>
+      {/* 3D Can Overlay - Centered and absolute */}
+      <div 
+        className="hero-can-wrapper" 
+        ref={containerRef}
+        style={{ 
+          position: "absolute", 
+          zIndex: 5, 
+          width: "100%", 
+          height: "100vh", // Full height for large showcase
+          display: "flex", 
+          justifyContent: "center", 
+          alignItems: "center" 
+        }}
+      >
+        <Can3D />
+      </div>
 
-          <p className="hero-desc">
-            Unleash your potential with A M Energy — crafted for those who never
-            stop. 200mg caffeine, bold flavors, and zero compromise. Fuel your
-            grind, own your energy.
+      {/* Foreground Text / Action Buttons (Pushed to bottom) */}
+      <div 
+        className="hero-foreground-content fade-up" 
+        style={{ 
+          position: "absolute", 
+          bottom: "10%", 
+          zIndex: 10, 
+          textAlign: "center", 
+          width: "100%", 
+          padding: "0 20px" 
+        }}
+      >
+        <div style={{ marginBottom: "20px" }}>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: 700, color: "white", marginBottom: "8px", textTransform: "uppercase", letterSpacing: "2px" }}>
+            <span style={{ color: "var(--red-soft)" }}>A M</span> Energy
+          </h2>
+          <p style={{ color: "var(--text-muted)", fontSize: "1rem", maxWidth: "400px", margin: "0 auto 0 auto" }}>
+            Premium Performance. Zero Compromise. Fuel your grind.
           </p>
-
-          <div className="hero-actions">
-            <a href="#flavors" className="btn btn-primary">
-              🔥 Explore Flavors
-            </a>
-            <a href="#contact" className="btn btn-secondary">
-              Contact Malik
-            </a>
-          </div>
-
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="num">200mg</div>
-              <div className="label">Caffeine</div>
-            </div>
-            <div className="hero-stat">
-              <div className="num">5</div>
-              <div className="label">Bold Flavors</div>
-            </div>
-            <div className="hero-stat">
-              <div className="num">330ml</div>
-              <div className="label">Per Can</div>
-            </div>
-            <div className="hero-stat">
-              <div className="num">100%</div>
-              <div className="label">Energy</div>
-            </div>
-          </div>
         </div>
-
-        <div className="hero-can-wrapper fade-up" ref={wrapperRef}>
-          <div 
-            className="hero-can-container" 
-            ref={containerRef}
-            style={{ width: "100%", height: "100%", position: "relative" }}
-          >
-            <Can3D />
-          </div>
+        
+        <div className="hero-actions" style={{ justifyContent: "center", marginTop: "15px" }}>
+          <a href="#flavors" className="btn btn-primary" style={{ pointerEvents: "auto" }}>
+            🔥 Explore Flavors
+          </a>
         </div>
       </div>
 
-      <div className="hero-smoke" />
+      <div className="hero-smoke" style={{ opacity: 0.6 }} />
     </section>
   );
 }
