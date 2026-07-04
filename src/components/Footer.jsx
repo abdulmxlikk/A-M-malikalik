@@ -1,4 +1,4 @@
-import { Zap, Instagram, Twitter, Youtube, Mail, Phone, Linkedin } from "lucide-react";
+import { Zap, Camera, MessageCircle, Play, Mail, Phone, User } from "lucide-react";
 
 const navLinks = {
   Shop: ["All Flavors", "Bundles", "Merch", "Gift Cards"],
@@ -7,9 +7,9 @@ const navLinks = {
 };
 
 const socials = [
-  { Icon: Instagram, href: "#", label: "Instagram" },
-  { Icon: Twitter, href: "#", label: "Twitter" },
-  { Icon: Youtube, href: "#", label: "YouTube" },
+  { Icon: Camera, href: "#", label: "Instagram" },
+  { Icon: MessageCircle, href: "#", label: "Twitter" },
+  { Icon: Play, href: "#", label: "YouTube" },
 ];
 
 export default function Footer() {
