@@ -5,14 +5,13 @@ import {
   Environment,
   Float,
   ContactShadows,
-  PresentationControls,
   Sparkles,
 } from "@react-three/drei";
 import * as THREE from "three";
 
 const CanMesh = () => {
   const canRef = useRef();
-  // We use the provided image as the cylinder texture
+  // Grape Grind can texture
   const texture = useTexture("/images/am-hero.png");
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.wrapS = THREE.RepeatWrapping;
@@ -20,35 +19,35 @@ const CanMesh = () => {
   texture.repeat.set(1, 1);
 
   useFrame((state, delta) => {
-    // Smooth, slow continuous rotation (left to right)
     if (canRef.current) {
-      canRef.current.rotation.y += delta * 0.4;
+      canRef.current.rotation.y += delta * 0.35;
     }
   });
 
   return (
     <group>
       <mesh ref={canRef} castShadow position={[0, 0, 0]}>
-        {/* Tall slim cylinder shape for energy drink */}
-        <cylinderGeometry args={[1.3, 1.3, 7.5, 64]} />
+        {/* Slim tall energy drink cylinder */}
+        <cylinderGeometry args={[1.25, 1.25, 7.8, 128]} />
         <meshPhysicalMaterial
           map={texture}
-          metalness={0.8}     // High metalness for premium look
-          roughness={0.2}     // Low roughness for glossy finish
-          envMapIntensity={1.5}
-          clearcoat={0.3}     // Adds the glossy "wet" look for condensation simulation
-          clearcoatRoughness={0.4}
+          metalness={0.85}
+          roughness={0.18}
+          envMapIntensity={2}
+          clearcoat={0.5}
+          clearcoatRoughness={0.3}
+          reflectivity={1}
           color="#ffffff"
         />
-        {/* Can Top (Metallic) */}
-        <mesh position={[0, 3.75, 0]}>
-          <cylinderGeometry args={[1.3, 1.3, 0.05, 64]} />
-          <meshStandardMaterial metalness={0.9} roughness={0.15} color="#d4d4d4" />
+        {/* Top lid */}
+        <mesh position={[0, 3.9, 0]}>
+          <cylinderGeometry args={[1.05, 1.25, 0.2, 128]} />
+          <meshPhysicalMaterial metalness={0.95} roughness={0.1} color="#c0c0c0" />
         </mesh>
-        {/* Can Bottom (Metallic) */}
-        <mesh position={[0, -3.75, 0]}>
-          <cylinderGeometry args={[1.3, 1.3, 0.05, 64]} />
-          <meshStandardMaterial metalness={0.9} roughness={0.15} color="#d4d4d4" />
+        {/* Bottom */}
+        <mesh position={[0, -3.9, 0]}>
+          <cylinderGeometry args={[1.15, 1.25, 0.12, 128]} />
+          <meshPhysicalMaterial metalness={0.95} roughness={0.1} color="#c0c0c0" />
         </mesh>
       </mesh>
     </group>
@@ -57,85 +56,79 @@ const CanMesh = () => {
 
 export default function Can3D() {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        position: "absolute",
-        top: 0,
-        left: 0,
-        zIndex: 10,
-        pointerEvents: "auto", // Ensure interaction works everywhere
-      }}
-    >
-      <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 16], fov: 40 }}>
-        {/* Ambient lighting - very dim for dramatic studio effect */}
-        <ambientLight intensity={0.15} />
+    <div style={{ width: "100%", height: "100%", position: "absolute", top: 0, left: 0, zIndex: 10, pointerEvents: "auto" }}>
+      <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 0, 16], fov: 38 }}>
+        {/* Very dim ambient */}
+        <ambientLight intensity={0.1} />
 
-        {/* Soft white studio rim light on the left */}
+        {/* Main key light - cool white from upper left */}
         <spotLight
-          position={[-12, 10, 8]}
-          angle={0.25}
-          penumbra={1}
-          intensity={15} // Adjusted for physical lighting
-          castShadow
-          color="#ffffff"
-          shadow-mapSize={[1024, 1024]}
-        />
-        
-        {/* Intense Red glow on the right side */}
-        <spotLight
-          position={[12, -5, 5]}
-          color="#ff0022"
-          angle={0.4}
+          position={[-10, 12, 10]}
+          angle={0.2}
           penumbra={1}
           intensity={20}
+          castShadow
+          color="#cce8ff"
+          shadow-mapSize={[2048, 2048]}
         />
-        
-        {/* Subtle top fill light */}
-        <pointLight position={[0, 8, 5]} intensity={2} color="#ffffff" />
-        {/* Soft fill light from bottom front */}
-        <pointLight position={[0, -5, 8]} intensity={1.5} color="#ffffff" />
 
-        <PresentationControls
-          global
-          config={{ mass: 2, tension: 400 }}
-          snap={{ mass: 4, tension: 300 }} // Snap back to center beautifully
-          rotation={[0, 0, 0]}
-          polar={[-Math.PI / 12, Math.PI / 12]} // Subtle up/down tilt limitation
-          azimuth={[-Math.PI / 3, Math.PI / 3]} // Subtle left/right tilt limitations
-        >
-          <Float
-            speed={1.5} // Slow, premium floating animation speed
-            rotationIntensity={0.2} // Very subtle rotation intensity for parallax
-            floatIntensity={0.7} // Up/down float bounds
-          >
-            <CanMesh />
-          </Float>
-        </PresentationControls>
+        {/* Neon cyan rim light */}
+        <spotLight
+          position={[10, -6, 6]}
+          color="#00f5ff"
+          angle={0.35}
+          penumbra={1}
+          intensity={25}
+        />
 
-        {/* Ultra-realistic shadow under the can / floor reflection */}
+        {/* Purple backlight for dramatic glow */}
+        <spotLight
+          position={[-6, -8, -10]}
+          color="#9b30ff"
+          angle={0.5}
+          penumbra={1}
+          intensity={12}
+        />
+
+        {/* Top fill */}
+        <pointLight position={[0, 10, 4]} intensity={3} color="#ffffff" />
+        {/* Front fill */}
+        <pointLight position={[0, -4, 10]} intensity={2} color="#e8f4ff" />
+
+        <Float speed={1.4} rotationIntensity={0.15} floatIntensity={0.8}>
+          <CanMesh />
+        </Float>
+
+        {/* Neon ground shadow */}
         <ContactShadows
-          position={[0, -4.5, 0]}
-          opacity={0.9}
-          scale={20}
-          blur={3}
+          position={[0, -4.8, 0]}
+          opacity={0.85}
+          scale={18}
+          blur={3.5}
           far={6}
-          color="#000000"
+          color="#000015"
         />
 
-        {/* Very subtle floating dust/smoke to give a dense studio atmosphere */}
-        <Sparkles 
-          count={60} 
-          scale={14} 
-          size={4} 
-          speed={0.15} 
-          opacity={0.15} 
-          color="#ffffff" 
+        {/* Cyan sparkles for cinematic atmosphere */}
+        <Sparkles
+          count={80}
+          scale={16}
+          size={3.5}
+          speed={0.1}
+          opacity={0.12}
+          color="#00f5ff"
+        />
+        {/* Purple sparkles */}
+        <Sparkles
+          count={40}
+          scale={14}
+          size={2.5}
+          speed={0.08}
+          opacity={0.08}
+          color="#9b30ff"
         />
 
-        {/* Studio environment for realistic metallic reflections */}
-        <Environment preset="studio" />
+        <Environment preset="city" />
       </Canvas>
     </div>
   );
