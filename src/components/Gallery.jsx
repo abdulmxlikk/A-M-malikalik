@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
 const galleryImages = [
-  { src: "/images/am-hero.png", label: "Grape Grind", span: "col-span-2 row-span-2", tall: true },
-  { src: "/images/am-blue-ice.png", label: "Blue Rush", span: "", tall: false },
-  { src: "/images/am-lemon-lime.png", label: "Lemon Lime", span: "", tall: false },
-  { src: "/images/am-mango-rush.png", label: "Mango Thunder", span: "", tall: false },
-  { src: "/images/am-green-apple.png", label: "Strawberry Surge", span: "", tall: false },
+  { src: "./images/am-hero.png", label: "Grape Grind", span: "col-span-2 row-span-2", tall: true },
+  { src: "./images/am-blue-ice.png", label: "Blue Rush", span: "", tall: false },
+  { src: "./images/am-lemon-lime.png", label: "Lemon Lime", span: "", tall: false },
+  { src: "./images/am-mango-rush.png", label: "Mango Thunder", span: "", tall: false },
+  { src: "./images/am-green-apple.png", label: "Strawberry Surge", span: "", tall: false },
 ];
 
 export default function Gallery() {
@@ -38,7 +38,7 @@ export default function Gallery() {
             whileHover={{ borderColor: "rgba(155,48,255,0.5)", boxShadow: "0 0 60px rgba(155,48,255,0.15)" }}
           >
             <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(155,48,255,0.1), transparent 70%)" }} />
-            <motion.img src="/images/am-hero.png" alt="Grape Grind" style={{ height: "280px", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 0 40px rgba(155,48,255,0.6))" }}
+            <motion.img src="./images/am-hero.png" alt="Grape Grind" style={{ height: "280px", objectFit: "contain", position: "relative", zIndex: 1, filter: "drop-shadow(0 0 40px rgba(155,48,255,0.6))" }}
               animate={{ y: [0, -12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <div style={{ position: "absolute", bottom: "20px", left: "20px", zIndex: 2 }}>
@@ -49,10 +49,10 @@ export default function Gallery() {
 
           {/* Other cans */}
           {[
-            { src: "/images/am-blue-ice.png", label: "Blue Rush", glow: "#00d4ff", row: "1", col: "2" },
-            { src: "/images/am-lemon-lime.png", label: "Lemon Lime", glow: "#c8d232", row: "1", col: "3" },
-            { src: "/images/am-mango-rush.png", label: "Mango Thunder", glow: "#ff9900", row: "2", col: "2" },
-            { src: "/images/am-green-apple.png", label: "Strawberry Surge", glow: "#ff3355", row: "2", col: "3" },
+            { src: "./images/am-blue-ice.png", label: "Blue Rush", glow: "#00d4ff", row: "1", col: "2" },
+            { src: "./images/am-lemon-lime.png", label: "Lemon Lime", glow: "#c8d232", row: "1", col: "3" },
+            { src: "./images/am-mango-rush.png", label: "Mango Thunder", glow: "#ff9900", row: "2", col: "2" },
+            { src: "./images/am-green-apple.png", label: "Strawberry Surge", glow: "#ff3355", row: "2", col: "3" },
           ].map((item, i) => (
             <motion.div
               key={item.label}

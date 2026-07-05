@@ -32,7 +32,7 @@ export default function Footer() {
               {[
                 { Icon: Phone, text: "+1 (555) 000-FUEL" },
                 { Icon: Mail, text: "hello@kineticenergy.co" },
-                { Icon: Linkedin, text: "linkedin.com/in/kinetic" },
+                { Icon: User, text: "linkedin.com/in/kinetic" },
               ].map(({ Icon, text }) => (
                 <div key={text} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <Icon size={14} style={{ color: "var(--cyan)", flexShrink: 0 }} />

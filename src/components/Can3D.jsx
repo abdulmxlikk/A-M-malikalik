@@ -12,7 +12,7 @@ import * as THREE from "three";
 const CanMesh = () => {
   const canRef = useRef();
   // Grape Grind can texture
-  const texture = useTexture("/images/am-hero.png");
+  const texture = useTexture("./images/am-hero.png");
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.ClampToEdgeWrapping;
