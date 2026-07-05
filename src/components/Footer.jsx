@@ -68,7 +68,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "24px 0", flexWrap: "wrap", gap: "16px" }}>
           <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.25)" }}>
-            © 2026 KINETIC Energy. All rights reserved.
+            © 2026 KINETIC Energy. Crafted with passion by Malik. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: "24px" }}>
             {["Privacy Policy", "Terms of Use", "Cookie Policy"].map((l) => (

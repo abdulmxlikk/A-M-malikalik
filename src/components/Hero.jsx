@@ -178,8 +178,8 @@ export default function Hero() {
                 transition={{ duration: 1.2, delay: 0.2 }}
               >
                 <div className="hero-title">
-                  <span className="hero-headline-1">UNLEASH THE</span>
-                  <span className="hero-headline-2">VIOLET SHOCK</span>
+                  <span className="hero-headline-1">KINETIC BY</span>
+                  <span className="hero-headline-2">MALIK</span>
                 </div>
               </motion.div>
             </div>
